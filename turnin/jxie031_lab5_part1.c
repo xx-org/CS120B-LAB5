@@ -23,7 +23,7 @@ int main(void) {
     /* Insert your solution below */
     while (1) {
 		C = 0x00;
-		A = PINA;
+		A = ~PINA;
 		if(A == 1 || A == 2)
 			C = C | (0x01 << 5);
 		else if (A == 3 || A == 4)

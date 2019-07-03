@@ -28,26 +28,26 @@ echo Running all tests..."\n\n
 
 
 test "PINA: 0 => PORTC: 0x40"
-setPINA 0x00
+setPINA 0xFF
 
 continue 5
 expectPORTC 0x40
 checkResult
 
 test "PINA: 1=> PORTC: 0x60"
-setPINA 0x01
+setPINA 0xFE
 continue 5
 expectPORTC 0x60
 checkResult
 
 test "PINA: 15 => PORTC: 0x3F"
-setPINA 15
+setPINA 0xF0
 continue 5
 expectPORTC 0x3F
 checkResult
 
 test "PINA: 3=> PORTC: 0x70"
-setPINA 3
+setPINA 0xFC
 continue 5
 expectPORTC 0x70
 checkResult

@@ -30,7 +30,7 @@ echo Running all tests..."\n\n
 Test "PINA: 0xFE  => PORTB: 1"
 set state = stay
 setPINA 0xFE
-Continue 2
+Continue 5
 expectPORTB 0x01
 expect state man
 checkResult
@@ -38,14 +38,14 @@ checkResult
 Test "PINA: 0xFE, 0xFE, 0xFE  => PORTB: 1"
 set state = stay
 setPINA 0xFE
-Continue 2
+Continue 5
 expectPORTB 0x02
 setPINA 0xFE
-Continue 2
+Continue 5
 setPINA 0xFE
-Continue 2
+Continue 5
 setPINA 0xFE
-Continue 2
+Continue 5
 expectPORTB 0x02
 expect state man
 checkResult
@@ -53,17 +53,40 @@ checkResult
 Test "PINA: 0xFE, 0xFE, 0xFE  => PORTB: 1"
 set state = stay
 setPINA 0xFE
-Continue 2
+Continue 5
 expectPORTB 0x04
 setPINA 0xFE
-Continue 2
+Continue 5
 setPINA 0xFE
-Continue 2
+Continue 5
 setPINA 0xFE
-Continue 2
+Continue 5
 expectPORTB 0x04
 expect state man
 checkResult
+
+Test "PINA: 0xFE, 0xFE, 0xFE, 0xFE, 0xFE => PORTB: 1"
+set state = stay
+setPINA 0xFE
+Continue 5
+expectPORTB 0x08
+expect state man
+setPINA 0xFE
+Continue 5
+expectPORTB 0x08
+expect state man
+setPINA 0xFE
+Continue 5
+expectPORTB 0x08
+expect state man
+setPINA 0xFE
+Continue 5
+expectPORTB 0x08
+expect state man
+setPINA 0xFE
+Continue 5
+expectPORTB 0x08
+expect state man
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed

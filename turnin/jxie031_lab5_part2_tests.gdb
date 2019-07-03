@@ -27,52 +27,52 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 
-Test "PINA: 0  => PORTC: 7"
+Test "PINA: 0xFF  => PORTC: 7"
 set state = start
-setPINA 0x00
+setPINA 0xFF
 Continue 2
 expectPORTC 0x07
 expect state init
 checkResult
 
-Test "PINA: 1  => PORTC: 8"
+Test "PINA: 0xFE  => PORTC: 8"
 set state = start
-setPINA 0x01
+setPINA 0xFE
 Continue 2
 expectPORTC 0x08
 expect state A0press
 checkResult
 
-Test "PINA: 2  => PORTC: 6"
+Test "PINA: 0xFD  => PORTC: 6"
 set state = start
-setPINA 0x02
+setPINA 0xFD
 Continue 2
 expectPORTC 0x06
 expect state A1press
 checkResult
 
-Test "PINA: 0,1,0,1,0,1,0,1,0,1  => PORTC: 9"
+Test "PINA: 0xFF,0xFE,0xFF,0xFE,0xFF,0xFE,0xFF,0xFE,0xFF,0xFE  => PORTC: 9"
 set state = start
-setPINA 0x00
+setPINA 0xFF
 Continue 2
 expect state init
-setPINA 0x01
+setPINA 0xFE
 Continue 1
 expect state A0press
-setPINA 0x00
+setPINA 0xFF
 Continue 1
 expect state A0release
-setPINA 0x01
+setPINA 0xFE
 Continue 1
 expect state A0press
-setPINA 0x00
+setPINA 0xFF
 Continue 1
 expect state A0release
-setPINA 0x01
+setPINA 0xFE
 Continue 1
-setPINA 0x00
+setPINA 0xFF
 Continue 1
-setPINA 0x01
+setPINA 0xFE
 Continue 1
 expectPORTC 0x09
 expect state A0press
@@ -80,25 +80,25 @@ checkResult
 
 Test "PINA: 2,0,2,0,2,0,2  => PORTC: 3"
 set state = start
-setPINA 0x02
+setPINA 0xFD
 Continue 2
 expectPORTC 0x06
-setPINA 0x00
+setPINA 0xFF
 Continue 1
 expectPORTC 0x06
-setPINA 0x02
+setPINA 0xFD
 Continue 1
 expectPORTC 0x05
-setPINA 0x00
+setPINA 0xFF
 Continue 1
 expectPORTC 0x05
-setPINA 0x02
+setPINA 0xFD
 Continue 1
 expectPORTC 0x04
-setPINA 0x00
+setPINA 0xFF
 Continue 1
 expectPORTC 0x04
-setPINA 0x02
+setPINA 0xFD
 Continue 1
 expectPORTC 0x03
 expect state A1press
@@ -106,17 +106,17 @@ checkResult
 
 Test "PINA: 2,0,1,0,2,3  => PORTC: 0"
 set state = start
-setPINA 0x02
+setPINA 0xFD
 Continue 2
-setPINA 0x00
+setPINA 0xFF
 Continue 2
-setPINA 0x01
+setPINA 0xFE
 Continue 2
-setPINA 0x00
+setPINA 0xFF
 Continue 2
-setPINA 0x02
+setPINA 0xFD
 Continue 2
-setPINA 0x03
+setPINA 0xFC
 Continue 2
 expectPORTC 0x00
 expect state reset
